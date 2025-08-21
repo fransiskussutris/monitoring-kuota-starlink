@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const mysql = require("mysql2/promise");
 const cron = require("node-cron");
@@ -5,10 +6,10 @@ const qrcode = require("qrcode-terminal");
 
 // Konfigurasi koneksi database
 const dbConfig = {
-  host: "10.43.17.15", // Ganti jika perlu
-  user: "root",
-  password: "packard1000",
-  database: "monitoring_starlink",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 };
 
 // Nomor penerima pesan (nomor pribadi atau grup, format: 62xxxxx@c.us atau groupId@g.us)
